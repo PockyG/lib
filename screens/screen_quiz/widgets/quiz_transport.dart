@@ -4,16 +4,29 @@ import 'package:flutter/widgets.dart';
 import '../styles/styles.dart' as styles;
 
 class QuizTransport extends StatefulWidget {
+
+  final Function(Map<String,bool> val) onChange;
+
+
+  QuizTransport({this.onChange});
+
   @override
   _QuizTransportState createState() => _QuizTransportState();
+
+  
 }
 
 class _QuizTransportState extends State<QuizTransport> {
-  bool canWalk = false;
-  bool canCar = false;
-  bool canBike = false;
-  bool canBus = false;
-  bool canTrain = false;
+      Map<String,bool> transportValues = {
+      "canWalk": false,
+      "canBike": false,
+      "canCar": false,
+      "canBus": false,
+      "canTrain": false,
+    };
+
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -52,12 +65,13 @@ class _QuizTransportState extends State<QuizTransport> {
                     shape: CircleBorder(side: BorderSide.none),
                     child: Icon(Icons.directions_walk),
                     onPressed: () {
-                      print("wow");
                       setState(() {
-                        canWalk = !canWalk;
+                        transportValues['canWalk']  = !transportValues['canWalk'];
+                        this.widget.onChange(transportValues);
+                        
                       });
                     },
-                    color: canWalk == true ? Colors.pink : Colors.grey.shade300,
+                    color: transportValues['canWalk'] == true ? Colors.pink : Colors.grey.shade300,
                   ),
                   //Bike
                   new RaisedButton(
@@ -65,12 +79,12 @@ class _QuizTransportState extends State<QuizTransport> {
                     shape: CircleBorder(side: BorderSide.none),
                     child: Icon(Icons.directions_bike),
                     onPressed: () {
-                      print("wow");
                       setState(() {
-                        canBike = !canBike;
+                        transportValues['canBike'] = !transportValues['canBike'];
+                        this.widget.onChange(transportValues);
                       });
                     },
-                    color: canBike == true ? Colors.pink : Colors.grey.shade300,
+                    color: transportValues['canBike'] == true ? Colors.pink : Colors.grey.shade300,
                   ),
                   //Car
                   new RaisedButton(
@@ -78,12 +92,12 @@ class _QuizTransportState extends State<QuizTransport> {
                     shape: CircleBorder(side: BorderSide.none),
                     child: Icon(Icons.directions_car),
                     onPressed: () {
-                      print("wow");
                       setState(() {
-                        canCar = !canCar;
+                        transportValues['canCar']  = !transportValues['canCar'];
+                        this.widget.onChange(transportValues);
                       });
                     },
-                    color: canCar == true ? Colors.pink : Colors.grey.shade300,
+                    color: transportValues['canCar'] == true ? Colors.pink : Colors.grey.shade300,
                   ),
                   //Bus
                   new RaisedButton(
@@ -91,12 +105,12 @@ class _QuizTransportState extends State<QuizTransport> {
                     shape: CircleBorder(side: BorderSide.none),
                     child: Icon(Icons.directions_bus),
                     onPressed: () {
-                      print("wow");
                       setState(() {
-                        canBus = !canBus;
+                        transportValues['canBus']  = !transportValues['canBus'];
+                        this.widget.onChange(transportValues);
                       });
                     },
-                    color: canBus == true ? Colors.pink : Colors.grey.shade300,
+                    color: transportValues['canBus'] == true ? Colors.pink : Colors.grey.shade300,
                   ),
                   //Train
                   new RaisedButton(
@@ -104,12 +118,12 @@ class _QuizTransportState extends State<QuizTransport> {
                     shape: CircleBorder(side: BorderSide.none),
                     child: Icon(Icons.directions_subway),
                     onPressed: () {
-                      print("wow");
                       setState(() {
-                        canTrain = !canTrain;
+                        transportValues['canTrain']  = !transportValues['canTrain'];
+                        this.widget.onChange(transportValues);
                       });
                     },
-                    color: canTrain == true ? Colors.pink : Colors.grey.shade300,
+                    color: transportValues['canTrain'] == true ? Colors.pink : Colors.grey.shade300,
                   ),
                 ],
               ),

@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import '../styles/styles.dart' as styles;
 
 class QuizSlider extends StatefulWidget {
+
+
     final Function(String val) onChangeEnd;
 
-    String title;
-    double sliderMin = 0;
-    double sliderMax = 10;
-    int sliderDivisions = 0;
-    bool bugIsRunOnce = false;
+    final String title;
+    final double sliderMin;
+    final double sliderMax;
+    final int sliderDivisions;
+    //bool bugIsRunOnce = false;
 
 
 
@@ -26,7 +28,6 @@ class _QuizSliderState extends State<QuizSlider> {
   void initState() {
     super.initState();
     sliderValue = (this.widget.sliderMax - this.widget.sliderMin)/2;
-        this.widget.sliderDivisions = (this.widget.sliderMax - this.widget.sliderMin).toInt();
 
   }
 
@@ -61,7 +62,7 @@ class _QuizSliderState extends State<QuizSlider> {
                   // }
                   
                   // this.widget.bugIsRunOnce = !this.widget.bugIsRunOnce;
-this.widget.onChangeEnd(value.toStringAsFixed(0));  
+            this.widget.onChangeEnd(value.toStringAsFixed(0));  
                 },
               ),
               title: new Container(

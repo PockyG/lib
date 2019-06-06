@@ -21,6 +21,30 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   String ageValue = "";
   String budgetValue = "";
+  Map<String,bool> transportValues =
+  {
+      "canWalk": false,
+      "canBike": false,
+      "canCar": false,
+      "canBus": false,
+      "canTrain": false,
+    };
+
+  Map<String,dynamic>buildJson = new Map<String,dynamic>();
+  
+
+    @override
+  void initState() {
+    super.initState();
+  }
+
+  //Conditions before the user can press the submit button.
+  bool canSubmit(){
+    if(ageValue != "" && budgetValue != ""){
+      return true;
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,13 +118,39 @@ class _QuizPageState extends State<QuizPage> {
                 ),
 
                 //Transport button bar
-                new QuizTransport(),
+                new QuizTransport(onChange: (selectedTransports){
+                  setState(() {
+                   transportValues = selectedTransports; 
+                  });
+                },),
 
                 //Interests Textfield
                 new QuizTextField(),
 
                 //Locations Textfield
                 new QuizTextFieldLocation(),
+
+
+
+                
+                //A done button.
+                
+                new RaisedButton(
+                  child: Text("Submit"),
+                  onPressed: canSubmit() ?(){
+                    print("Age: " + ageValue);
+                    print("Budget: " + budgetValue);
+                    print(transportValues);
+
+
+                    buildJson["Age"] = ageValue;
+                    buildJson["Budget"] = budgetValue;
+                    buildJson["Transport"] = transportValues;
+
+                    print(buildJson);
+                    
+                  } : null,
+                )
               ],
             ),
           ],
