@@ -6,15 +6,14 @@ class Wot {
   String wotName;
   String wotDescription;
   List<WotAddress> wotAddress;
-
-
-  int studentScores;
+  double wotDistanceToLocation;
 
   Wot({
     this.wotId,
     this.wotName,
     this.wotDescription,
     this.wotAddress,
+    this.wotDistanceToLocation,
 
 
 });
@@ -31,8 +30,7 @@ List<WotAddress> addressList = list.map((i) => WotAddress.fromJson(i)).toList();
       wotName : parsedJson['productName'],
       wotDescription : parsedJson ['productDescription'],
       wotAddress: addressList,
-
-
+      wotDistanceToLocation: parsedJson['distanceToLocation'],
     );
   }
 }

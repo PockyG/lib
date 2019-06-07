@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../styles/styles.dart' as styles;
 
 class QuizTextFieldLocation extends StatefulWidget {
+  
+
   @override
   _QuizTextFieldStateLocation createState() => _QuizTextFieldStateLocation();
 }

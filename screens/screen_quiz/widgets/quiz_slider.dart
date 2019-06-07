@@ -39,6 +39,9 @@ class _QuizSliderState extends State<QuizSlider> {
       child: Container(
         padding: EdgeInsets.all(8.0),
         child: new Card(
+          shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
           child: new ListTile(
               subtitle: new Slider(
 
