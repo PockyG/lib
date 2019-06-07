@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:wotsay/models/wot.dart';
+import 'package:http/http.dart' as http;
+import 'dart:io';
 
 List<Wot> convertJsonToWotList(jsonEnvelope){
   List<Wot> wotList = new List<Wot>();
@@ -12,3 +13,26 @@ List<Wot> convertJsonToWotList(jsonEnvelope){
 }
 
 
+Future<http.Response> createPost(Post post, String url) async{
+   final response = await http.post('$url',
+      headers: {
+        HttpHeaders.contentTypeHeader: 'application/json'
+      },
+      body: post.postToJson()
+  );
+  return response;
+}
+
+
+
+class Post{
+  String username;
+  String password;
+
+  Map<String, String> postToJson(){
+    return {
+      "username": username,
+      "password": password,
+    };
+  }
+}

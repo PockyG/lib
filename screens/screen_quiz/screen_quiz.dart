@@ -89,7 +89,7 @@ class _QuizScreenState extends State<QuizScreen> {
             ],
           ),
         ),
-        backgroundColor: Colors.amber.shade200,
+        backgroundColor: Colors.amber.shade300,
         //Back button------
         leading: new InkWell(
           customBorder: CircleBorder(),

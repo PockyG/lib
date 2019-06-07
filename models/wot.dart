@@ -7,6 +7,7 @@ class Wot {
   String wotDescription;
   List<WotAddress> wotAddress;
   double wotDistanceToLocation;
+  String wotImageUrl;
 
   Wot({
     this.wotId,
@@ -14,6 +15,7 @@ class Wot {
     this.wotDescription,
     this.wotAddress,
     this.wotDistanceToLocation,
+    this.wotImageUrl,
 
 
 });
@@ -31,6 +33,7 @@ List<WotAddress> addressList = list.map((i) => WotAddress.fromJson(i)).toList();
       wotDescription : parsedJson ['productDescription'],
       wotAddress: addressList,
       wotDistanceToLocation: parsedJson['distanceToLocation'],
+      wotImageUrl: parsedJson['productImage'],
     );
   }
 }
