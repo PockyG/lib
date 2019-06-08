@@ -21,11 +21,11 @@ class _EventItemState extends State<EventItem> {
           //clipBehavior: Clip.antiAliasWithSaveLayer,
           child: Stack(
             children: <Widget>[
- Image.network(
-                  event.wotImageUrl,
-                  fit: BoxFit.fill,
-                  scale: 0.8,
-                ),
+              Image.network(
+                event.wotImageUrl,
+                fit: BoxFit.fill,
+                scale: 0.8,
+              ),
               ListTile(
                 contentPadding: EdgeInsets.all(8.0),
                 title: new Text(

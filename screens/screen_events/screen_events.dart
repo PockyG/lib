@@ -53,7 +53,7 @@ class _PickEventScreenState extends State<PickEventScreen> {
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.all(8.0),
-                    //Events list
+                    //Events list---------
                     child: wotList.length > 0
                         ? new ListView.builder(
                             itemCount: wotList.length,
