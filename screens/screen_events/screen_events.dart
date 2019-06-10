@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../utils//testdata.dart' as testdata;
 import '../../utils/utils.dart' as utils;
+import '../../utils/api/apiUtils.dart' as utilsAPI;
 import '../../models/wot.dart';
 import 'widgets/wot_event_item.dart';
 
@@ -15,8 +18,42 @@ class PickEventScreen extends StatefulWidget {
 
 class _PickEventScreenState extends State<PickEventScreen> {
   var data = testdata.testdata;
+ 
+
 
   List<Wot> wotList = new List<Wot>();
+
+
+  _apiButtonPressed()async {
+     var testUser = new utils.Post(username: "Lionel", password: "expecting a 401");
+
+var mapBody = {"HEY YEALLLLALL":"-27,153","dist":"50","itineraryID":"2019052216402185876530800"};
+  String stringBody = mapBody.toString();
+  String postResult = "rip";
+    postResult = await utils.postDigestAuth("http://206.196.111.123:8111/LATEST/resources/helloworld", "api", "@pi201906", 
+     stringBody);
+     print("THe BUTTON RESULTS:  " + postResult);
+     
+     
+
+
+
+    
+
+ 
+
+
+  }
+
+  _getButtonPressed(){
+    // utils.testGet(utilsAPI.realUrl).then(
+    //    (response) {print("response:" + response.body); print("headers:" + response.headers.toString());}).catchError((onError)=> print(onError));
+    // utils.getHttpClient("api", "@pi201906").get("http://206.196.111.123:8111/LATEST/resources/WotSayIT?rs:latlong=-27,153&rs:dist=50")
+    
+    //utils.getHttpClient("api", "@pi201906").getUrl('http://colormind.io/list/').then((onValue){print(onValue.toString());});
+    utils.getColors("api", "@pi201906");
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +76,16 @@ class _PickEventScreenState extends State<PickEventScreen> {
             new RaisedButton(
               onPressed: () {
                 setState(() {
-                  wotList = utils.convertJsonToWotList(data);
+                  _apiButtonPressed();
                 });
               },
-              child: Text("api?"),
+              child: Text("post?"),
+            ),
+            new RaisedButton(
+              child:  Text("get?"),
+              onPressed: (){
+                _getButtonPressed();
+              },
             ),
           ],
         ),
